@@ -1,0 +1,15 @@
+name: "DayZ Types Validator"
+description: "Validates DayZ types.xml via dayztypes.com API"
+
+inputs:
+  root:
+    description: "Root folder name (e.g. vanilla)"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run validator
+      run: |
+        java -jar "${{ github.action_path }}/DayzTypesValidator-1.0-SNAPSHOT.jar" "${{ inputs.root }}"
+      shell: bash
